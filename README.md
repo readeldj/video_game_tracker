@@ -12,11 +12,16 @@ Users will be able to CRUD a game in the list. The user will also be able to cre
 # Features
 
 ## List out games
-## 
+* The user will be able to print out lists of either games the already own or ones they want.
+* Games will list:
+  * What systems they can be played on (1 or more Wii, XBox, iOS...)
+  * There age rating
+  * Can Play online/MultiPlayer
+
 ## Add new games
-* Replace games that have been traded
-* Update games
-* Delete games that they no longer own
+## Replace games that have been traded
+## Update games
+## Delete games that they no longer own
 
 
 ## Import CSV list of existing games already owned
