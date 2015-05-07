@@ -11,9 +11,9 @@ Users will be able to CRUD a game in the list. The user will also be able to cre
 
 ## Features
 
-* List out games
-* 
-* Add new games
+# List out games
+# 
+# Add new games
 * Replace games that have been traded
 * Update games
 * Delete games that they no longer own
