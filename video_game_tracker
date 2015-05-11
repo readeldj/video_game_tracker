@@ -1,1 +1,37 @@
 #!/usr/bin/env ruby
+require 'highline/import'
+
+menu_prompt = <<EOS
+1. List Owned Games - owned
+2. List Wanted Games - wanted
+3. Manage DB - manage
+4. Exit
+EOS
+
+if ARGV.length < 1
+  print "[Help] Run as: ./video_game_tracker help"
+elsif ARGV.length == 1
+  # Not valid argument
+  if ARGV[0] != 'help' && ARGV[0] != 'manage'
+    print "[Help] Run as: ./video_game_tracker help"
+  elsif ARGV[0] == 'help'
+    choose do |menu|
+      menu.prompt = ""
+
+      menu.choice('List Owned Games - owned') { say("") }
+      menu.choice('List Wanted Games - wanted') { say("") }
+      menu.choice('Manage DB - manage') { say("") }
+      menu.choice('Exit') { say("Later!\n") }
+    end
+  elsif ARGV[0] == 'manage'
+    choose do |menu|
+      menu.prompt = ""
+
+      menu.choice('Add A Game') { say("") }
+      menu.choice('Update A Game') { say("") }
+      menu.choice('Delete A Game') { say("") }
+      menu.choice('List All Games') { say("") }
+      menu.choice('Exit') { say("Later!\n") }
+    end
+  end
+end

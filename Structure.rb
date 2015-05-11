@@ -5,6 +5,7 @@ Usage Example:
 1.List Owned Games - owned
 2.List Wanted Games - wanted
 3.Manage DB - manage
+4.Exit
 
 *** Manage ***
 > ./video_game_tracker manage
@@ -119,7 +120,7 @@ Delete A Game
 
 > 1
 Game Name
-
+#{GAME NAME}
 Are you sure you want to delete? (y/n)
 
 $..return to previous menu
