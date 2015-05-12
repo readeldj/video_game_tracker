@@ -20,15 +20,25 @@ Games will list:
 
 *** Start ***
 Usage Example:
-  > ./video_game_tracker help
-  1.List Owned Games - owned
-  2.List Wanted Games - wanted
-  3.Manage DB - manage
-  4.Exit
+    > ./video_game_tracker
+    1.List Owned Games - owned
+    2.List Wanted Games - wanted
+    3.Manage DB - manage
+    4.Exit
+
+    > 1
+
+    1. Temple Run                         10+ E - Everyone 10+, Single Player, iOS (iPad or iPhone)
+    2. Candy Crush                        E - Everyone, Single Player, iOS (iPad or iPhone)
+    3. Where’s my Water                   E - Everyone, Single Player, iOS (iPad or iPhone)
+    4. Dragonvale                         E - Everyone, MultiPlayer/Online, iOS (iPad or iPhone)
+    5. Guitar Hero III - Legends of Rock  T - Teen, MultiPlayer/Online, Play Station 3
+    .
+    .
 
 Acceptance Criteria:
 
-  * The Program will print out either list upon entering the corisponding number, or by typing "video_game_tracker owned" or "video_game_tracker wanted"
+  * The Program will print out either list upon entering the corresponding number, or by typing "video_game_tracker owned" or "video_game_tracker wanted"
 
 ### Add new games
 
@@ -36,38 +46,46 @@ Users will spend their Allowance to buy more games. We will be able to add these
 
 ** Add A Game **
 Usage Example
-  > 1
-  Enter Game Name..
+    > 1
+    Enter Game Name..
 
-  Enter Game System Type By Choosing One Of The Following
-  1.Wii U
-  2.XBox 360
-  3.Play Station 3
-  4.iOS (iPad or iPhone)
-  5.Windows OS
-  6.Mac OS X
-  7.Nintendo DS
-  8.Wii
+    Enter Game System Type By Choosing One Of The Following
+    1.Wii U
+    2.XBox 360
+    3.Play Station 3
+    4.iOS (iPad or iPhone)
+    5.Windows OS
+    6.Mac OS X
+    7.Nintendo DS
+    8.Wii
 
-  Returned
-  1.Enter Another Game System
-  2.Next Step
+    > 7
 
-  Enter Game Maturity Rating
-  1.eC - Early Childhood
-  2.E - Everyone
-  3.10+ E - Everyone 10+
-  4.T - Teen
-  5.M - Mature 17+
-  6.Ao - Adults Only 18+
-  7.RP - Rating Pending
+    Returned
+    1.Enter Another Game System
+    2.Next Step
 
-  Enter Game Player Style
-  1.Single Player
-  2.MultiPlayer
-  3.MultiPlayer/Online
+    > 2
 
-  $..return to previous menu
+    Enter Game Maturity Rating
+    1.eC - Early Childhood
+    2.E - Everyone
+    3.10+ E - Everyone 10+
+    4.T - Teen
+    5.M - Mature 17+
+    6.Ao - Adults Only 18+
+    7.RP - Rating Pending
+
+    > 2
+
+    Enter Game Player Style
+    1.Single Player
+    2.MultiPlayer
+    3.MultiPlayer/Online
+
+    > 3
+
+    ($..return to previous menu)
 
 Acceptance Criteria:
 
@@ -82,73 +100,79 @@ Games that where on the "Wanted" list may be purchased eventually. We will be ab
 
 ** Update A Game **
 Usage Example
-  > 2
-  Update A Game
-  1.Enter Game Name
-  2.List All Games  ## Will return back to this menu
-  3.Exit
+    > 2
+    Update A Game
+    1.Enter Game Name
+    2.List All Games  ## Will return back to this menu
+    3.Exit
 
-  > 1
-  Editing #{GAME NAME}
-  1.Edit Name
-  2.Edit System Type
-  3.Edit Maturity Rating
-  4.Edit Player Style
-  5.Ownership Status
-  6.Exit
+    > 1
 
-  > 1 "Edit name"
-  The Game Name Is #{GAME NAME}, change to..
-  $..return to previous menu
+    > 1
+    Editing #{GAME NAME}
+    1.Edit Name
+    2.Edit System Type
+    3.Edit Maturity Rating
+    4.Edit Player Style
+    5.Ownership Status
+    6.Exit
 
-  2. "Edit System Type"
-  > 2
-  System types are #{1.WiiU 2.XBox 360 3.iOS ... }
-  1.Add New
-  2.Select number to Delete
-  3.Return to Previous Menu
+    > 5
 
-  > 1 "Add New"
-  Choose a number for the new System to add the System Type:
-  1.Wii U
-  2.XBox 360
-  3.Play Station 3
-  4.iOS (iPad or iPhone)
-  5.Windows OS
-  6.Mac OS X
-  7.Nintendo DS
-  8.Wii
+    > 1 "Edit name"
+    The Game Name Is #{GAME NAME}, change to..
 
+    ($..return to previous menu)
 
-  Loop - System types are #{1.WiiU 2.XBox 360 3.iOS ... }
+    2. "Edit System Type"
+    > 2
+    System types are #{1.WiiU 2.XBox 360 3.iOS ... }
+    1.Add New
+    2.Select number to Delete
+    3.Return to Previous Menu
 
-  3. "Edit Maturity Rating"
-  > 3
-  The Maturity Rating is #{MATURITY RATING}, Change To The Following
-  1.eC - Early Childhood
-  2.E - Everyone
-  3.10+ E - Everyone 10+
-  4.T - Teen
-  5.M - Mature 17+
-  6.Ao - Adults Only 18+
-  7.RP - Rating Pending
+    > 1 "Add New"
+    Choose a number for the new System to add the System Type:
+    1.Wii U
+    2.XBox 360
+    3.Play Station 3
+    4.iOS (iPad or iPhone)
+    5.Windows OS
+    6.Mac OS X
+    7.Nintendo DS
+    8.Wii
 
-  $..return to previous menu
+    (Loop - System types are #{1.WiiU 2.XBox 360 3.iOS ... })
 
-  4. "Edit Player Style"
-  > 4
-  The Player Style is #{PLAYER STYLE}, Change To The Following
-  1.Single Player
-  2.MultiPlayer
-  3.MultiPlayer/Online
+    3. "Edit Maturity Rating"
+    > 3
+    The Maturity Rating is #{MATURITY RATING}, Change To The Following
+    1.eC - Early Childhood
+    2.E - Everyone
+    3.10+ E - Everyone 10+
+    4.T - Teen
+    5.M - Mature 17+
+    6.Ao - Adults Only 18+
+    7.RP - Rating Pending
 
-  5. Ownership Status
-  > 5
-  The game is current status is #{OWNER STATUS}, Change To The Following
-  1.Owned
-  2.Wanted
+    ($..return to previous menu)
 
-  $..return to previous menu
+    4. "Edit Player Style"
+    > 4
+    The Player Style is #{PLAYER STYLE}, Change To The Following
+    1.Single Player
+    2.MultiPlayer
+    3.MultiPlayer/Online
+
+    5. Ownership Status
+    > 5
+    The game is current status is #{OWNER STATUS}, Change To The Following
+    1.Owned
+    2.Wanted
+
+    > 1
+
+    ($..return to previous menu)
 
 Acceptance Criteria:
 
@@ -161,18 +185,18 @@ Users can trade games with their friends, sale them on VarageSale, trade at Game
 
 ** Delete A Game **
 Usage Example
-  > 3
-  Delete A Game
-  1.Enter Game Name
-  2.List All Games  ## Will return back to this menu
-  3.Exit
+    > 3
+    Delete A Game
+    1.Enter Game Name
+    2.List All Games  ## Will return back to this menu
+    3.Exit
 
-  > 1
-  Game Name
-  #{GAME NAME}
-  Are you sure you want to delete? (y/n)
+    > 1
+    Game Name
+    #{GAME NAME}
+    Are you sure you want to delete? (y/n)
 
-  $..return to previous menu
+    ($..return to previous menu)
 
 Acceptance Criteria:
 

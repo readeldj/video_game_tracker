@@ -3,4 +3,5 @@ source "https://rubygems.org"
 
 gem "minitest"
 gem 'minitest-reporters'
-gem 'highline'
+gem 'highline' # used for menu
+gem 'sqlite3'  # used for DB interface
