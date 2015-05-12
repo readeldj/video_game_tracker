@@ -8,25 +8,21 @@ menu_prompt = <<EOS
 4. Exit
 EOS
 
-if ARGV.length < 1
-  print "[Help] Run as: ./video_game_tracker help"
-elsif ARGV.length == 1
-  # Not valid argument
-  if ARGV[0] != 'help' && ARGV[0] != 'manage'
-    print "[Help] Run as: ./video_game_tracker help"
-  elsif ARGV[0] == 'help'
-    choose do |menu|
+if ARGV.length == 0
+  choose do |menu|
       menu.prompt = ""
-
       menu.choice('List Owned Games - owned') { say("") }
       menu.choice('List Wanted Games - wanted') { say("") }
       menu.choice('Manage DB - manage') { say("") }
       menu.choice('Exit') { say("Later!\n") }
     end
+
+elsif ARGV.length == 1
+  if ARGV[0] != 'owned' && ARGV[0] != 'wanted' && ARGV[0] != 'manage'
+    print "[Help] Run as: ./video_game_tracker  with no arguements"
   elsif ARGV[0] == 'manage'
     choose do |menu|
       menu.prompt = ""
-
       menu.choice('Add A Game') { say("") }
       menu.choice('Update A Game') { say("") }
       menu.choice('Delete A Game') { say("") }
@@ -34,4 +30,5 @@ elsif ARGV.length == 1
       menu.choice('Exit') { say("Later!\n") }
     end
   end
+
 end
