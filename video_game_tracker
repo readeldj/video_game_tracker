@@ -1,6 +1,9 @@
 #!/usr/bin/env ruby
 require 'highline/import'
 
+Dir["./app/**/*.rb"].each { |f| require f }
+Dir["./lib/*.rb"].each { |f| require f }
+
 menu_prompt = <<EOS
 1. List Owned Games - owned
 2. List Wanted Games - wanted
@@ -11,7 +14,8 @@ EOS
 if ARGV.length == 0
   choose do |menu|
       menu.prompt = ""
-      menu.choice('List Owned Games - owned') { say("") }
+      games_controller = GamesController.new
+      menu.choice('List Owned Games - owned') { games_controller.index }
       menu.choice('List Wanted Games - wanted') { say("") }
       menu.choice('Manage DB - manage') { say("") }
       menu.choice('Exit') { say("Later!\n") }

@@ -1,7 +1,7 @@
 
 *** Start ***
 Usage Example:
-> ./video_game_tracker help
+> ./video_game_tracker
 1.List Owned Games - owned
 2.List Wanted Games - wanted
 3.Manage DB - manage
@@ -29,9 +29,13 @@ Enter Game System Type By Choosing One Of The Following
 7.Nintendo DS
 8.Wii
 
+> 7
+
 Returned
 1.Enter Another Game System
 2.Next Step
+
+> 2
 
 Enter Game Maturity Rating
 1.eC - Early Childhood
@@ -42,12 +46,22 @@ Enter Game Maturity Rating
 6.Ao - Adults Only 18+
 7.RP - Rating Pending
 
+> 2
+
 Enter Game Player Style
 1.Single Player
 2.MultiPlayer
 3.MultiPlayer/Online
 
-$..return to previous menu
+> 3
+
+Ownership Status
+1.Owned
+2.Wanted
+
+> 1
+
+($..return to previous menu)
 
 ** Update A Game **
 > 2
@@ -57,16 +71,22 @@ Update A Game
 3.Exit
 
 > 1
+
+> 1
 Editing #{GAME NAME}
 1.Edit Name
 2.Edit System Type
 3.Edit Maturity Rating
 4.Edit Player Style
-5.Exit
+5.Ownership Status
+6.Exit
+
+> 5
 
 > 1 "Edit name"
 The Game Name Is #{GAME NAME}, change to..
-$..return to previous menu
+
+($..return to previous menu)
 
 2. "Edit System Type"
 > 2
@@ -86,8 +106,7 @@ Choose a number for the new System to add the System Type:
 7.Nintendo DS
 8.Wii
 
-
-Loop - System types are #{1.WiiU 2.XBox 360 3.iOS ... }
+(Loop - System types are #{1.WiiU 2.XBox 360 3.iOS ... })
 
 3. "Edit Maturity Rating"
 > 3
@@ -100,7 +119,7 @@ The Maturity Rating is #{MATURITY RATING}, Change To The Following
 6.Ao - Adults Only 18+
 7.RP - Rating Pending
 
-$..return to previous menu
+($..return to previous menu)
 
 4. "Edit Player Style"
 > 4
@@ -109,7 +128,15 @@ The Player Style is #{PLAYER STYLE}, Change To The Following
 2.MultiPlayer
 3.MultiPlayer/Online
 
-$..return to previous menu
+5. Ownership Status
+> 5
+The game is current status is #{OWNER STATUS}, Change To The Following
+1.Owned
+2.Wanted
+
+> 1
+
+($..return to previous menu)
 
 ** Delete A Game **
 > 3
@@ -123,8 +150,7 @@ Game Name
 #{GAME NAME}
 Are you sure you want to delete? (y/n)
 
-$..return to previous menu
-
+($..return to previous menu)
 
 
 

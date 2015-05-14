@@ -85,8 +85,13 @@ Usage Example
 
     > 3
 
-    ($..return to previous menu)
+    Ownership Status
+    1.Owned
+    2.Wanted
 
+    > 1
+
+    ($..return to previous menu)
 Acceptance Criteria:
 
   * The user will have to enter the game name
