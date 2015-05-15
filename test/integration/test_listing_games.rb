@@ -16,7 +16,6 @@ class TestListingGames < Minitest::Test
   end
 
   def test_listing_multiple_owned_games
-    setup_database
     create_game("Minecraft")
     create_game("Skylanders")
     shell_output = ""

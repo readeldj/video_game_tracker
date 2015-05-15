@@ -7,9 +7,9 @@ class TestBasicUsage < Minitest::Test
   def test_help_argument_incorrect
     shell_output = ""
     expected_output = ""
-    IO.popen('./video_game_tracker blah') do |pipe|
+    IO.popen('./video_game_tracker blah') do |mac|
       expected_output = "[Help] Run as: ./video_game_tracker  with no arguements"
-      shell_output = pipe.read
+      shell_output = mac.read
     end
     assert_equal expected_output, shell_output
   end

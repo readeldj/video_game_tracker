@@ -1,34 +1,29 @@
-require 'rubygems'
 require 'bundler/setup'
-require "minitest/reporters"
-
-reporter_options = { color: true }
-Minitest::Reporters.use! [Minitest::Reporters::DefaultReporter.new(reporter_options)]
-
 require 'minitest/autorun'
+require "minitest/reporters"
+require 'rubygems'
 require 'sqlite3'
 Dir["./app/**/*.rb"].each { |f| require f }
 Dir["./lib/*.rb"].each { |f| require f }
 
+reporter_options = { color: true }
+Minitest::Reporters.use! [Minitest::Reporters::DefaultReporter.new(reporter_options)]
+
+
 class Minitest::Test
   def setup
-    Database.load_structure
+    Database.execute <<-SQL
+    CREATE TABLE IF NOT EXISTS games (
+      id integer PRIMARY KEY AUTOINCREMENT,
+      name varchar(255) NOT NULL
+    );
+    SQL
     Database.execute("DELETE FROM games;")
   end
 end
 
 def create_game(name)
   Database.execute("INSERT INTO games (name) VALUES (?)", name)
-end
-
-def setup_database
-  # @db = SQLite3::Database.new("db/video_game_tracker_test.sqlite")
-  Database.execute <<-SQL
-  CREATE TABLE IF NOT EXISTS games (
-    id integer PRIMARY KEY AUTOINCREMENT,
-    name varchar(40) NOT NULL
-  );
-SQL
 end
 
 def main_menu

@@ -1,9 +1,6 @@
 require_relative '../test_helper'
 
 describe Game do
-  before do
-    setup_database
-  end
   describe "#all" do
     describe "if there are no games in the database" do
       it "should return an empty array" do
