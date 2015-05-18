@@ -5,6 +5,7 @@ require 'rubygems'
 require 'sqlite3'
 Dir["./app/**/*.rb"].each { |f| require f }
 Dir["./lib/*.rb"].each { |f| require f }
+ENV["TEST"] = "true"
 
 reporter_options = { color: true }
 Minitest::Reporters.use! [Minitest::Reporters::DefaultReporter.new(reporter_options)]
@@ -12,12 +13,7 @@ Minitest::Reporters.use! [Minitest::Reporters::DefaultReporter.new(reporter_opti
 
 class Minitest::Test
   def setup
-    Database.execute <<-SQL
-    CREATE TABLE IF NOT EXISTS games (
-      id integer PRIMARY KEY AUTOINCREMENT,
-      name varchar(255) NOT NULL
-    );
-    SQL
+    Database.load_structure
     Database.execute("DELETE FROM games;")
   end
 end

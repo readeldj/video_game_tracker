@@ -8,6 +8,12 @@ This will be a small command-line program that asks the user about the games the
 
 Users will be able to CRUD a game in the list. The user will also be able to create lists of the games they already own or ones they would like.
 
+## Usage
+
+ * Run `rake bootstrap_database` to setup your local database.
+ * Then, `./video_game_tracker manage` to manage the list of owned/wanted games.
+
+
 ## Features
 
 ### List out games

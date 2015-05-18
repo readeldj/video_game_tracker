@@ -3,9 +3,9 @@ class Game
 
   def self.all
     Database.execute("select name from games order by name ASC").map do |row|
-      scenario = Game.new
-      scenario.name = row[0]
-      scenario
+      game = Game.new
+      game.name = row[0]
+      game
     end
   end
 

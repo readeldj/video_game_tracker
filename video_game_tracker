@@ -21,10 +21,11 @@ elsif ARGV.length == 1
   elsif ARGV[0] == 'manage'
     choose do |menu|
       menu.prompt = ""
+      games_controller = GamesController.new
       menu.choice('Add A Game') { say("") }
       menu.choice('Update A Game') { say("") }
       menu.choice('Delete A Game') { say("") }
-      menu.choice('List All Games') { say("") }
+      menu.choice('List All Games') { games_controller.index }
       menu.choice('Exit') { say("Later!\n") }
     end
   end
