@@ -19,15 +19,34 @@ elsif ARGV.length == 1
   if ARGV[0] != 'owned' && ARGV[0] != 'wanted' && ARGV[0] != 'manage'
     print "[Help] Run as: ./video_game_tracker  with no arguements"
   elsif ARGV[0] == 'manage'
-    choose do |menu|
-      menu.prompt = ""
-      games_controller = GamesController.new
-      menu.choice('Add A Game') { say("") }
-      menu.choice('Update A Game') { say("") }
-      menu.choice('Delete A Game') { say("") }
-      menu.choice('List All Games') { games_controller.index }
-      menu.choice('Exit') { say("Later!\n") }
+    loop do
+      choose do |menu|
+        menu.prompt = ""
+        games_controller = GamesController.new
+
+        menu.choice('Add A Game') do
+          user_input = ask ("What game would you like to add?")
+          response = games_controller.add(user_input)
+          say(response) unless response.nil?
+        end
+
+        menu.choice('Update A Game') do
+          say (games_controller.index)
+          exit
+        end
+
+        menu.choice('Delete A Game') { say("") }
+
+        menu.choice('List All Games') do
+          say games_controller.index
+          exit
+        end
+
+        menu.choice('Exit') do
+          say("Later!\n")
+          exit
+        end
+      end
     end
   end
-
 end

@@ -28,3 +28,11 @@ def main_menu
   "3. Manage DB - manage\n" +
   "4. Exit\n"
 end
+
+def manage_menu
+  "1. Add A Game\n" +
+  "2. Update A Game\n" +
+  "3. Delete A Game\n" +
+  "4. List All Games\n" +
+  "5. Exit\n"
+end

@@ -11,4 +11,10 @@ class GamesController
       say("No games found. Add a game.\n")
     end
   end
+
+  def add(name)
+    name_cleaned = name.strip
+    Game.create(name_cleaned)
+    "\"#{name}\" has been added\n"
+  end
 end
