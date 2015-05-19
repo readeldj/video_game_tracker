@@ -7,7 +7,7 @@ class TestListingGames < Minitest::Test
     expected_output = ""
     IO.popen('./video_game_tracker', 'r+') do |pipe|
       expected_output << main_menu
-      pipe.puts "1"
+      pipe.puts "1" # List all owned games
       expected_output << "No games found. Add a game.\n"
       pipe.close_write
       shell_output = pipe.read

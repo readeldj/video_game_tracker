@@ -23,6 +23,11 @@ describe Game do
         actual = Game.all.map{ |game| game.name }
         assert_equal expected, actual
       end
+      it "populates the returned games' ids" do
+        expected_ids = Database.execute("SELECT id FROM games order by name ASC").map{ |row| row['id'] }
+        actual_ids = Game.all.map{ |scenario| scenario.id }
+        assert_equal expected_ids, actual_ids
+      end
     end
   end
 
@@ -43,4 +48,18 @@ describe Game do
       end
     end
   end
+
+  # describe "#create" do
+  #   describe "if we need to add games" do
+  #     it "should add a game" do
+  #       Game.create("Speed Racer")
+  #       assert_equal 1, Game.count
+  #     end
+
+  #     it "should reject empty strings" do
+  #      assert_raises(ArgumentError) { Game.create("")}
+  #     end
+  #   end
+  # end
+
 end

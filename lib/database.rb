@@ -20,6 +20,7 @@ class Database
     environment = ENV["TEST"] ? "test" : "production"
     database = "db/video_game_tracker_#{environment}.sqlite"
     @@db = SQLite3::Database.new(database)
+    @@db.results_as_hash = true
   end
   ## Not sure how to test this yet. Need to verify it works somehow
 end

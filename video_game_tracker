@@ -9,7 +9,12 @@ if ARGV.length == 0
   choose do |menu|
       menu.prompt = ""
       games_controller = GamesController.new
-      menu.choice('List Owned Games - owned') { games_controller.index }
+
+      menu.choice('List Owned Games - owned') do
+          say (games_controller.index)
+          exit
+      end
+
       menu.choice('List Wanted Games - wanted') { say("") }
       menu.choice('Manage DB - manage') { say("") }
       menu.choice('Exit') { say("Later!\n") }
@@ -28,6 +33,9 @@ elsif ARGV.length == 1
           user_input = ask ("What game would you like to add?")
           response = games_controller.add(user_input)
           say(response) unless response.nil?
+          # if /has\sbeen\sadded$/.match(response)
+          #   break
+          # end
         end
 
         menu.choice('Update A Game') do
@@ -38,7 +46,7 @@ elsif ARGV.length == 1
         menu.choice('Delete A Game') { say("") }
 
         menu.choice('List All Games') do
-          say games_controller.index
+          say (games_controller.index)
           exit
         end
 
