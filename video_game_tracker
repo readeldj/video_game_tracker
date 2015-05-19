@@ -4,6 +4,43 @@ require 'highline/import'
 Dir["./app/**/*.rb"].each { |f| require f }
 Dir["./lib/*.rb"].each { |f| require f }
 
+def manage_menu 
+  loop do
+    choose do |menu|
+      menu.prompt = ""
+      games_controller = GamesController.new
+
+      menu.choice('Add A Game') do
+        loop do
+          user_input = ask ("What game would you like to add?")
+          response = games_controller.add(user_input)
+          say(response) unless response.nil?
+          if /has\sbeen\sadded$/.match(response)
+            break
+          end
+        end
+      end
+
+      menu.choice('Update A Game') do
+        say (games_controller.index)
+        exit
+      end
+
+      menu.choice('Delete A Game') { say("") }
+
+      menu.choice('List All Games') do
+        say (games_controller.index)
+        exit
+      end
+
+      menu.choice('Exit') do
+        say("Later!\n")
+        exit
+      end
+    end
+  end
+end
+
 
 if ARGV.length == 0
   choose do |menu|
@@ -16,7 +53,9 @@ if ARGV.length == 0
       end
 
       menu.choice('List Wanted Games - wanted') { say("") }
-      menu.choice('Manage DB - manage') { say("") }
+      menu.choice('Manage DB - manage') do
+        manage_menu
+      end
       menu.choice('Exit') { say("Later!\n") }
     end
 
@@ -24,37 +63,6 @@ elsif ARGV.length == 1
   if ARGV[0] != 'owned' && ARGV[0] != 'wanted' && ARGV[0] != 'manage'
     print "[Help] Run as: ./video_game_tracker  with no arguements"
   elsif ARGV[0] == 'manage'
-    loop do
-      choose do |menu|
-        menu.prompt = ""
-        games_controller = GamesController.new
-
-        menu.choice('Add A Game') do
-          user_input = ask ("What game would you like to add?")
-          response = games_controller.add(user_input)
-          say(response) unless response.nil?
-          # if /has\sbeen\sadded$/.match(response)
-          #   break
-          # end
-        end
-
-        menu.choice('Update A Game') do
-          say (games_controller.index)
-          exit
-        end
-
-        menu.choice('Delete A Game') { say("") }
-
-        menu.choice('List All Games') do
-          say (games_controller.index)
-          exit
-        end
-
-        menu.choice('Exit') do
-          say("Later!\n")
-          exit
-        end
-      end
-    end
+    manage_menu
   end
 end
