@@ -9,9 +9,9 @@ describe Game do
     end
     describe "if there are games" do
       before do
-        create_game("Bob")
-        create_game("Sally")
-        create_game("Amanda")
+        create_game("Bob", "3", "2", "1", "2")
+        create_game("Sally", "3", "2", "1", "2")
+        create_game("Amanda", "3", "2", "1", "2")
       end
       it "should return an array" do
         # You don't need to be pedantic like this.
@@ -39,9 +39,9 @@ describe Game do
     end
     describe "if there are games 2" do
       before do
-        create_game("Bob")
-        create_game("Sally")
-        create_game("Amanda")
+        create_game("Bob", "3", "2", "1", "2")
+        create_game("Sally", "3", "2", "1", "2")
+        create_game("Amanda", "3", "2", "1", "2")
       end
       it "should return the correct count" do
         assert_equal 3, Game.count
@@ -50,7 +50,7 @@ describe Game do
   end
 
   describe "#find" do
-    let(:game){ Game.new("Make pancakes") }
+    let(:game){ Game.new("Make pancakes", "1", "2", "3", "1") }
     before do
       game.save
     end
@@ -71,7 +71,7 @@ describe Game do
   describe "equality" do
     describe "when the game ids are the same" do
       it "is true" do
-        game1 = Game.new("foo")
+        game1 = Game.new("foo", "3", "2", "1", "2")
         game1.save
         game2 = Game.all.first
         assert_equal game1, game2
@@ -79,9 +79,9 @@ describe Game do
     end
     describe "when the game ids are not the same" do
       it "is true" do
-        game1 = Game.new("foo")
+        game1 = Game.new("foo", "3", "2", "1", "2")
         game1.save
-        game2 = Game.new("foo")
+        game2 = Game.new("foo", "3", "2", "1", "2")
         game2.save
         assert game1 != game2
       end
@@ -90,14 +90,14 @@ describe Game do
 
   describe ".initialize" do
     it "sets the name attribute" do
-      game = Game.new("foo")
+      game = Game.new("foo", "3", "2", "1", "2")
       assert_equal "foo", game.name
     end
   end
 
   describe ".save" do
     describe "if the model is valid" do
-      let(:game){ Game.new("roast a pig") }
+      let(:game){ Game.new("roast a pig", "3", "2", "1", "2") }
       it "should return true" do
         assert game.save
       end

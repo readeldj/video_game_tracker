@@ -1,0 +1,7 @@
+1,eC,Early Childhood
+2,E,Everyone
+3,10+ E,Everyone 10+
+4,T,Teen
+5,M,Mature 17+
+6,Ao,Adults Only 18+
+7,RP,Rating Pending

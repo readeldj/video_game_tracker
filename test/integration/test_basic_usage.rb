@@ -37,6 +37,7 @@ EOS
     expected_output = ""
     IO.popen('./video_game_tracker manage', 'r+') do |pipe|
       expected_output = <<EOS
+\n***  Manage Menu  ***
 1. Add A Game
 2. Update A Game
 3. Delete A Game

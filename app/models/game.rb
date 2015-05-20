@@ -1,14 +1,18 @@
 class Game
 
-  attr_accessor :name
+  attr_accessor :name, :system, :maturity, :style, :ownership
   attr_reader :id, :errors
 
   def self.count
     Database.execute("select count(id) from games")[0][0]
   end
 
-  def initialize(name = nil)
+  def initialize(name = nil, system = nil, maturity = nil, style = nil, ownership = nil)
     self.name = name
+    self.system = system
+    self.maturity = maturity
+    self.style = style
+    self.ownership = ownership
   end
 
   def ==(other)
@@ -42,7 +46,7 @@ class Game
 
   def save
     return false unless valid?
-    Database.execute("INSERT INTO games (name) VALUES (?)", name)
+    Database.execute("INSERT INTO games (name, system, maturity, style, ownership) VALUES (?,?,?,?,?)", name, system, maturity, style, ownership)
     @id = Database.execute("SELECT last_insert_rowid()")[0]['last_insert_rowid()']
   end
 

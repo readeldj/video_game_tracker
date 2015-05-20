@@ -4,21 +4,15 @@ require 'highline/import'
 Dir["./app/**/*.rb"].each { |f| require f }
 Dir["./lib/*.rb"].each { |f| require f }
 
-def manage_menu 
+def manage_menu
   loop do
+    say "\n***  Manage Menu  ***"
     choose do |menu|
       menu.prompt = ""
       games_controller = GamesController.new
 
       menu.choice('Add A Game') do
-        loop do
-          user_input = ask ("What game would you like to add?")
-          response = games_controller.add(user_input)
-          say(response) unless response.nil?
-          if /has\sbeen\sadded$/.match(response)
-            break
-          end
-        end
+        add_game
       end
 
       menu.choice('Update A Game') do
@@ -40,6 +34,43 @@ def manage_menu
     end
   end
 end
+
+def add_game
+  games_controller = GamesController.new
+  loop do
+    game_name = ask ("\n** What game would you like to add? **")
+    game_system = ask "\n** Enter Game System Type By Choosing One Of The Following **\n" +
+    "1. Wii U\n" +
+    "2. XBox 360\n" +
+    "3. Play Station 3\n" +
+    "4. iOS (iPad or iPhone)\n" +
+    "5. Windows OS\n" +
+    "6. Mac OS X\n" +
+    "7. Nintendo DS\n" +
+    "8. Wii\n"
+    game_maturity = ask "\n** Enter Game Maturity Rating **\n" +
+    "1. eC - Early Childhood\n" +
+    "2. E - Everyone\n" +
+    "3. 10+ E - Everyone 10+\n" +
+    "4. T - Teen\n" +
+    "5. M - Mature 17+\n" +
+    "6. Ao - Adults Only 18+\n" +
+    "7. RP - Rating Pending\n"
+    game_player_style = ask "\n** Enter Game Player Style **\n" +
+    "1. Single Player\n" +
+    "2. MultiPlayer\n" +
+    "3. MultiPlayer/Online\n"
+    game_ownership = ask "\n** Ownership Status **\n" +
+    "1. Owned\n" +
+    "2. Wanted\n"
+    response = games_controller.add(game_name, game_system, game_maturity, game_player_style, game_ownership)
+    say(response) unless response.nil?
+    if /has\sbeen\sadded$/.match(response)
+      break
+    end
+  end
+end
+
 
 
 if ARGV.length == 0

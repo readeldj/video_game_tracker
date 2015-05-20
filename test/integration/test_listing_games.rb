@@ -16,8 +16,8 @@ class TestListingGames < Minitest::Test
   end
 
   def test_listing_multiple_owned_games
-    create_game("Minecraft")
-    create_game("Skylanders")
+    create_game("Minecraft", "1", "2", "3", "1")
+    create_game("Skylanders", "1", "2", "3", "1")
     shell_output = ""
     expected_output = ""
     IO.popen('./video_game_tracker', 'r+') do |pipe|
