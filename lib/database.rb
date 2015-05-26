@@ -10,7 +10,11 @@ class Database
       system integer NOT NULL,
       maturity integer NOT NULL,
       style integer NOT NULL,
-      ownership integer NOT NULL
+      ownership integer NOT NULL,
+      FOREIGN KEY (system) REFERENCES game_systems (id),
+      FOREIGN KEY (maturity) REFERENCES maturity_ratings (id),
+      FOREIGN KEY (style) REFERENCES player_styles (id),
+      FOREIGN KEY (ownership) REFERENCES ownerships (id)
     );
     SQL
 
@@ -27,6 +31,20 @@ class Database
       id integer PRIMARY KEY AUTOINCREMENT,
       maturity_rating_short NVARCHAR(40) NOT NULL,
       maturity_rating_long NVARCHAR(40) NOT NULL
+    );
+    SQL
+
+    Database.execute <<-SQL
+    CREATE TABLE IF NOT EXISTS player_styles (
+      id integer PRIMARY KEY AUTOINCREMENT,
+      player_style NVARCHAR(30) NOT NULL
+    );
+    SQL
+
+    Database.execute <<-SQL
+    CREATE TABLE IF NOT EXISTS ownerships (
+      id integer PRIMARY KEY AUTOINCREMENT,
+      ownership BOOLEAN NOT NULL
     );
     SQL
 

@@ -20,11 +20,13 @@ def manage_menu
         exit
       end
 
-      menu.choice('Delete A Game') { say("") }
+      menu.choice('Delete A Game') do
+        game = ask ("\nName that game\n")
+        games_controller.delete(game)
+      end
 
       menu.choice('List All Games') do
         say (games_controller.index)
-        exit
       end
 
       menu.choice('Exit') do
