@@ -4,6 +4,32 @@ require 'highline/import'
 Dir["./app/**/*.rb"].each { |f| require f }
 Dir["./lib/*.rb"].each { |f| require f }
 
+
+
+def main_menu
+  loop do
+    say "\n***  Main Menu  ***"
+    choose do |menu|
+      menu.prompt = ""
+      games_controller = GamesController.new
+
+      menu.choice('List Owned Games - owned') do
+          say (games_controller.index)
+      end
+
+      menu.choice('List Wanted Games - wanted') { say("") }
+      menu.choice('Manage DB - manage') do
+        manage_menu
+      end
+      menu.choice('Exit') do
+        say("Later!\n")
+        exit
+      end
+    end
+  end
+end
+
+
 def manage_menu
   loop do
     say "\n***  Manage Menu  ***"
@@ -75,26 +101,10 @@ def add_game
   return
 end
 
-
-
 if ARGV.length == 0
-  choose do |menu|
-      menu.prompt = ""
-      games_controller = GamesController.new
+  main_menu()
 
-      menu.choice('List Owned Games - owned') do
-          say (games_controller.index)
-          exit
-      end
-
-      menu.choice('List Wanted Games - wanted') { say("") }
-      menu.choice('Manage DB - manage') do
-        manage_menu
-      end
-      menu.choice('Exit') { say("Later!\n") }
-    end
-
-elsif ARGV.length == 1
+elsif ARGV.length == 1 # We haven't enabled this yet, but the args work.
   if ARGV[0] != 'owned' && ARGV[0] != 'wanted' && ARGV[0] != 'manage'
     print "[Help] Run as: ./video_game_tracker  with no arguements"
   elsif ARGV[0] == 'manage'
