@@ -22,7 +22,8 @@ def manage_menu
 
       menu.choice('Delete A Game') do
         game = ask ("\nName that game\n")
-        games_controller.delete(game)
+        response = games_controller.delete(game)
+        say(response)
       end
 
       menu.choice('List All Games') do
