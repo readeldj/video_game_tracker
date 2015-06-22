@@ -72,6 +72,7 @@ def add_game
       break
     end
   end
+  return
 end
 
 
