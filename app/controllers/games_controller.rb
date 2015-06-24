@@ -6,7 +6,7 @@ class GamesController
       games = Game.all # All of the scenarios in an array
       games_string = "\n** Game Name | System | Rating | Player Style | Ownership **\n\n"
       games.each_with_index do |game, index|
-        games_string << "#{index + 1}. #{game.name} | #{game.system} | #{game.maturity} | #{game.style} | #{game.ownership}\n" #=> 1. Eat a pencil
+        games_string << "#{index + 1}. #{game.name} | #{game.system} | #{game.maturity} | #{game.style} | #{game.ownership}\n"
       end
       games_string
     else
@@ -24,14 +24,19 @@ class GamesController
     end
   end
 
-  def delete(game)
-    gone = Game.delete(game)
+  def delete
+    game = Game.all
+    games_controller = GamesController.new
+    say(games_controller.index)
+    say("\nWhich game would you like to delete? Type the number and press Enter.")
+    game_index = ask('')
+    game_index = game_index.to_i - 1
+    game[game_index]
+    gone = Game.delete(game[game_index].id)
     if gone
-      "\"#{game}\" has been deleted\n"
+      say("Game number #{game_index+1} has been deleted\n")
     else
-      "\"#{game}\" was not found"
+      "was not found"
     end
   end
 end
-
-

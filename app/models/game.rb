@@ -50,14 +50,9 @@ class Game
     @id = Database.execute("SELECT last_insert_rowid()")[0]['last_insert_rowid()']
   end
 
-  def self.delete(game)
-    name = Database.execute("SELECT name FROM games WHERE name LIKE '%#{game}%'")[0][0]
-    if name == game
-      Database.execute("DELETE FROM games WHERE name LIKE '#{game}%'")
-      true
-    else
-      false
-    end
+  def self.delete(game_index)
+    Database.execute("DELETE FROM games where id=?", game_index)
+    true
   end
 
   private

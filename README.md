@@ -105,9 +105,9 @@ Acceptance Criteria:
 
 ### Update games
 
-Users might already own the the game in App version on a tablet. They might decide to purcahse the game for their game console which is attached to a TV or Monitor. They will be able to update that game in the DB with the addition on the new system which it can be played on.
+Users might already own the the game in App version on a tablet. They might decide to purchase the game for their game console which is attached to a TV or Monitor. They will be able to update that game in the DB with the addition on the new system which it can be played on.
 
-Games that where on the "Wanted" list may be purchased eventually. We will be able to update that Own/Want status.
+Games that were on the "Wanted" list may be purchased eventually. We will be able to update that Own/Want status.
 
 ** Update A Game **
 Usage Example
