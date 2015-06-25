@@ -14,10 +14,13 @@ def main_menu
       games_controller = GamesController.new
 
       menu.choice('List Owned Games - owned') do
-          say (games_controller.index)
+          say (games_controller.index_owned)
       end
 
-      menu.choice('List Wanted Games - wanted') { say("") }
+      menu.choice('List Wanted Games - wanted') do
+        say (games_controller.index_wanted)
+      end
+
       menu.choice('Manage DB - manage') do
         manage_menu
       end
@@ -43,16 +46,10 @@ def manage_menu
 
       menu.choice('Update A Game') do
         games_controller.edit
-        # say (games_controller.index)
-        # exit
       end
 
       menu.choice('Delete A Game') do
         games_controller.delete
-        # say (games_controller.index)
-        # game = ask ("\nName that game\n")
-        # response = games_controller.delete(game)
-        # say(response)
       end
 
       menu.choice('List All Games') do

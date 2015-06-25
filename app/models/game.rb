@@ -25,6 +25,18 @@ class Game
     end
   end
 
+  def self.all_owned
+    Database.execute("select * from games where ownership = 1 order by name ASC").map do |row|
+      populate_from_database(row)
+    end
+  end
+
+  def self.all_wanted
+    Database.execute("select * from games where ownership = 2 order by name ASC").map do |row|
+      populate_from_database(row)
+    end
+  end
+
   def self.find(id)
     row = Database.execute("select * from games where id = ?", id).first
     if row.nil?
