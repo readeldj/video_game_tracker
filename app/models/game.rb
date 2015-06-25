@@ -46,9 +46,27 @@ class Game
 
   def save
     return false unless valid?
-    Database.execute("INSERT INTO games (name, system, maturity, style, ownership) VALUES (?,?,?,?,?)", name, system, maturity, style, ownership)
-    @id = Database.execute("SELECT last_insert_rowid()")[0]['last_insert_rowid()']
+    # if @id.nil?
+      Database.execute("INSERT INTO games (name, system, maturity, style, ownership) VALUES (?,?,?,?,?)", name, system, maturity, style, ownership)
+      @id = Database.execute("SELECT last_insert_rowid()")[0]['last_insert_rowid()']
   end
+
+  def save_name
+    Database.execute("UPDATE games SET name = ? WHERE id = ?", name, id)
+  end
+  def save_system
+    Database.execute("UPDATE games SET system = ? WHERE id = ?", system, id)
+  end
+  def save_maturity
+    Database.execute("UPDATE games SET maturity = ? WHERE id = ?", maturity, id)
+  end
+  def save_style
+    Database.execute("UPDATE games SET style = ? WHERE id = ?", style, id)
+  end
+  def save_ownership
+    Database.execute("UPDATE games SET ownership = ? WHERE id = ?", ownership, id)
+  end
+
 
   def self.delete(game_index)
     Database.execute("DELETE FROM games where id=?", game_index)

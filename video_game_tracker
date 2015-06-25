@@ -42,8 +42,9 @@ def manage_menu
       end
 
       menu.choice('Update A Game') do
-        say (games_controller.index)
-        exit
+        games_controller.edit
+        # say (games_controller.index)
+        # exit
       end
 
       menu.choice('Delete A Game') do
